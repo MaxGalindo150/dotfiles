@@ -1,0 +1,176 @@
+after-startup-command = ['exec-and-forget sketchybar']
+
+exec-on-workspace-change = ['/bin/bash', '-c',
+  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
+]
+
+start-at-login = true
+
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+accordion-padding = 300
+
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+automatically-unhide-macos-hidden-apps = true
+
+# ─── Workspaces ───────────────────────────────────────────────────────────────
+# MacBook 14"  →  1: Slack + Teams  │  2: WhatsApp
+# 32" DELL     →  3: Proyecto A     │  4: Proyecto B  │  5: Chrome solo  │  6: Libre
+
+# ─── App rules ────────────────────────────────────────────────────────────────
+
+# Comunicación → MacBook
+[[on-window-detected]]
+if.app-name-regex-substring = 'slack'
+run = 'move-node-to-workspace 1'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'teams'
+run = 'move-node-to-workspace 1'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'whatsapp'
+run = 'move-node-to-workspace 2'
+
+# Floating misc
+[[on-window-detected]]
+if.app-name-regex-substring = 'telegram'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'finder'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'safari'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'discord'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'mail'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'trello'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'quicktime'
+run = 'layout floating'
+
+# ─── Key mapping ──────────────────────────────────────────────────────────────
+[key-mapping]
+preset = 'qwerty'
+
+# ─── Gaps ─────────────────────────────────────────────────────────────────────
+# monitor.main = MacBook 14" (más padding, ventanas más centradas)
+# default      = 32" DELL (gaps pequeños, máximo espacio para trabajo)
+[gaps]
+inner.horizontal = [{ monitor."HT32CGMBK03" = 8 }, 6]
+inner.vertical   = [{ monitor."HT32CGMBK03" = 8 }, 6]
+outer.left       = [{ monitor."HT32CGMBK03" = 16 }, 10]
+outer.right      = [{ monitor."HT32CGMBK03" = 16 }, 10]
+outer.bottom     = [{ monitor."HT32CGMBK03" = 8  }, 10]
+outer.top        = [{ monitor."HT32CGMBK03" = 55 }, 25]
+
+# ─── Bindings principales ─────────────────────────────────────────────────────
+[mode.main.binding]
+
+# Layout
+alt-ctrl-shift-f = 'fullscreen'
+alt-ctrl-f       = 'layout floating tiling'
+alt-slash        = 'layout tiles horizontal vertical'
+alt-comma        = 'layout accordion horizontal vertical'
+
+# Focus ventanas (vim)
+alt-h = 'focus left'
+alt-j = 'focus down'
+alt-k = 'focus up'
+alt-l = 'focus right'
+
+# Focus entre monitores
+alt-ctrl-h = 'focus-monitor left'
+alt-ctrl-l = 'focus-monitor right'
+
+# Mover ventanas
+alt-shift-h = 'move left'
+alt-shift-j = 'move down'
+alt-shift-k = 'move up'
+alt-shift-l = 'move right'
+
+# Join containers
+alt-shift-left  = 'join-with left'
+alt-shift-down  = 'join-with down'
+alt-shift-up    = 'join-with up'
+alt-shift-right = 'join-with right'
+
+# Resize
+alt-shift-minus = 'resize smart -50'
+alt-shift-equal = 'resize smart +50'
+
+# Workspaces — ir a
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
+alt-5 = 'workspace 5'
+alt-6 = 'workspace 6'
+
+# Workspaces — mover ventana a
+alt-shift-1 = 'move-node-to-workspace 1 --focus-follows-window'
+alt-shift-2 = 'move-node-to-workspace 2 --focus-follows-window'
+alt-shift-3 = 'move-node-to-workspace 3 --focus-follows-window'
+alt-shift-4 = 'move-node-to-workspace 4 --focus-follows-window'
+alt-shift-5 = 'move-node-to-workspace 5 --focus-follows-window'
+alt-shift-6 = 'move-node-to-workspace 6 --focus-follows-window'
+
+alt-tab       = 'workspace-back-and-forth'
+alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+
+# Modos
+alt-shift-semicolon = 'mode service'
+alt-shift-enter     = 'mode apps'
+
+# ─── App launchers ────────────────────────────────────────────────────────────
+alt-w = 'exec-and-forget open -a /Applications/Ghostty.app'
+alt-t = 'exec-and-forget open -a "/Applications/Microsoft Teams.app"'
+alt-s = 'exec-and-forget open -a /Applications/Slack.app'
+alt-o = 'exec-and-forget open -a /Applications/Obsidian.app'
+alt-b = 'exec-and-forget open -a /Applications/Brain.fm.app'
+alt-f = 'exec-and-forget open -a /System/Library/CoreServices/Finder.app'
+alt-q = 'exec-and-forget open -a "/System/Applications/QuickTime Player.app"'
+alt-e = 'exec-and-forget open -a "/Applications/Final Cut Pro.app"'
+alt-z = 'exec-and-forget open -a /Applications/Zen.app'
+
+# Chrome por perfil
+alt-ctrl-1 = 'exec-and-forget open -na "Google Chrome" --args --profile-directory="Profile 13"'  # cashea
+alt-ctrl-2 = 'exec-and-forget open -na "Google Chrome" --args --profile-directory="Profile 11"'  # eigencore
+alt-ctrl-3 = 'exec-and-forget open -na "Google Chrome" --args --profile-directory="Profile 14"'  # personal
+
+# ─── Service mode ─────────────────────────────────────────────────────────────
+[mode.service.binding]
+esc       = ['reload-config', 'mode main']
+r         = ['flatten-workspace-tree', 'mode main']
+f         = ['layout floating tiling', 'mode main']
+backspace = ['close-all-windows-but-current', 'mode main']
+
+# ─── Apps mode ────────────────────────────────────────────────────────────────
+[mode.apps.binding]
+alt-w = ['exec-and-forget open -a /Applications/Ghostty.app', 'mode main']
+
+# ─── Monitor → workspace assignment ───────────────────────────────────────────
+[workspace-to-monitor-force-assignment]
+1 = '^Built-in.*$'
+2 = '^Built-in.*$'
+3 = 'HT32CGMBK03'
+4 = 'HT32CGMBK03'
+5 = 'HT32CGMBK03'
+6 = 'HT32CGMBK03'
