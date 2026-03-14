@@ -1,11 +1,15 @@
 # Dotfiles
 
+<div align="center">
+
 ![macOS](https://img.shields.io/badge/macOS-Sequoia-000000?style=flat-square&logo=apple&logoColor=white)
 ![Neovim](https://img.shields.io/badge/editor-Neovim-57A143?style=flat-square&logo=neovim&logoColor=white)
 ![Shell](https://img.shields.io/badge/shell-zsh-4EAA25?style=flat-square&logo=gnu-bash&logoColor=white)
 ![Terminal](https://img.shields.io/badge/terminal-Ghostty-blueviolet?style=flat-square)
 ![WM](https://img.shields.io/badge/wm-AeroSpace-0078D4?style=flat-square)
 ![Theme](https://img.shields.io/badge/theme-Catppuccin_Mocha-CBA6F7?style=flat-square)
+
+</div>
 
 ![Setup](img/setup.png)
 
