@@ -29,6 +29,7 @@ commit_hash_length = 1
 disabled = false
 
 [git_status]
+ignore_submodules = true
 format = '([+$staged](bold green))([ !$modified](bold yellow))([ ?$untracked](bold blue))([ ✘$deleted](bold red))([ ⇡$ahead_count](bold teal))([ ⇣$behind_count](bold peach)) '
 staged = "$count"
 modified = "$count"
